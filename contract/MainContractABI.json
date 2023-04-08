@@ -1,0 +1,698 @@
+[
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_distributer",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_location",
+        "type": "string"
+      }
+    ],
+    "name": "createDistributer",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_prodName",
+        "type": "string"
+      },
+      {
+        "internalType": "string[]",
+        "name": "_rawMaterialConsts",
+        "type": "string[]"
+      },
+      {
+        "internalType": "address",
+        "name": "_manufacturer",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_unitPrice",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_prodId",
+        "type": "string"
+      }
+    ],
+    "name": "createManufacturedProd",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string[]",
+        "name": "_manufacturedProds",
+        "type": "string[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "_quantity",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "string",
+        "name": "_orderDateTime",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_totalPrice",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "_distributer",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_manufacturer",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_orderId",
+        "type": "string"
+      }
+    ],
+    "name": "createManufacturedProdOrder",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_manufacturer",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_location",
+        "type": "string"
+      }
+    ],
+    "name": "createManufacturer",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_materialName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_materialSource",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_unitPrice",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "_creator",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_materialId",
+        "type": "string"
+      }
+    ],
+    "name": "createRawMaterial",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string[]",
+        "name": "_rawMaterials",
+        "type": "string[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "_quantities",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "string",
+        "name": "_orderDateTime",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_totalPrice",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "_manufacturer",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_supplier",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_orderId",
+        "type": "string"
+      }
+    ],
+    "name": "createRawMaterialOrder",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_supplier",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_location",
+        "type": "string"
+      }
+    ],
+    "name": "createRawMaterialSupplier",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAllDistributers",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "distributerAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "location",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct DataTypes.Distributer[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAllManufacturedProdOrders",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "prodId",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "productName",
+            "type": "string"
+          },
+          {
+            "internalType": "string[]",
+            "name": "rawMaterialConstituents",
+            "type": "string[]"
+          },
+          {
+            "internalType": "address",
+            "name": "_manufacturer",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "originalPrice",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct DataTypes.ManufacturedProduct[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAllManufacturedProds",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "prodId",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "productName",
+            "type": "string"
+          },
+          {
+            "internalType": "string[]",
+            "name": "rawMaterialConstituents",
+            "type": "string[]"
+          },
+          {
+            "internalType": "address",
+            "name": "_manufacturer",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "originalPrice",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct DataTypes.ManufacturedProduct[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAllManufacturers",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "manuFacturerAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "location",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct DataTypes.Manufacturer[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAllRawMaterialOrders",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "orderId",
+            "type": "string"
+          },
+          {
+            "internalType": "string[]",
+            "name": "rawMaterials",
+            "type": "string[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "quantities",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "string",
+            "name": "orderDateTime",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "totalPrice",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "manufacturer",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "supplier",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct DataTypes.RawMaterialOrder[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAllRawMaterials",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "materialId",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "materialName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "materialSource",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "creator",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "origUnitPrice",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct DataTypes.RawMaterial[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAllSuppliers",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "rawMatSupplierAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "location",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct DataTypes.RawMaterialSupplier[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_distributer",
+        "type": "address"
+      }
+    ],
+    "name": "getDistributerByPublicAddress",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "distributerAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "location",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct DataTypes.Distributer",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_orderId",
+        "type": "string"
+      }
+    ],
+    "name": "getManufacturedProdOrderById",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "orderId",
+            "type": "string"
+          },
+          {
+            "internalType": "string[]",
+            "name": "manufacturedProducts",
+            "type": "string[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "quantities",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "string",
+            "name": "orderDateTime",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "_distributer",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "_manufacturer",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "totalPrice",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct DataTypes.ManufacturedProductOrder",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_prodId",
+        "type": "string"
+      }
+    ],
+    "name": "getManufacturedProductById",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "prodId",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "productName",
+            "type": "string"
+          },
+          {
+            "internalType": "string[]",
+            "name": "rawMaterialConstituents",
+            "type": "string[]"
+          },
+          {
+            "internalType": "address",
+            "name": "_manufacturer",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "originalPrice",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct DataTypes.ManufacturedProduct",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_manufacturer",
+        "type": "address"
+      }
+    ],
+    "name": "getManufacturerByPublicAddress",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "manuFacturerAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "location",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct DataTypes.Manufacturer",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_supplier",
+        "type": "address"
+      }
+    ],
+    "name": "getSupplierByPublicAddress",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "rawMatSupplierAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "location",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct DataTypes.RawMaterialSupplier",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
