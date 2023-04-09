@@ -109,7 +109,9 @@ exports.createManufacturer = (req, res, next) => {
     const password = req.body.password
     let transactionHash
 
-    contract.createManaufacturer(publicAddress, name, location)
+
+
+    contract.createManufacturer(publicAddress, name, location)
     .then((tx) => {
         return tx.wait();
     })

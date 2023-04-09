@@ -15,4 +15,6 @@ router.post('/rawMaterial/create', isAuth, [
 
 router.get('/rawMaterials', isAuth, supplierController.getCreatedRawMaterials)
 
+router.get('/rawMaterialOrders/recieved', isAuth, supplierController.getRecievedRawMaterialOrders)
+
 module.exports = router

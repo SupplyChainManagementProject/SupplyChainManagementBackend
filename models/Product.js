@@ -11,7 +11,7 @@ const productSchema = new Schema({
         required: true
     },
     currentUnitPrice: {
-        type: String,
+        type: Number,
         required: true
     },
     rawMaterials: [{

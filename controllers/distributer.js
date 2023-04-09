@@ -20,6 +20,7 @@ exports.createProductOrder = (req, res, next) => {
     let transactionHash
     let orderId
     let totalOrderPrice
+    let manufacAddress
 
     const productsArray = productOrderItems.map(obj => obj.product)
     const quantityArray = productOrderItems.map(obj => obj.quantity)
@@ -32,16 +33,24 @@ exports.createProductOrder = (req, res, next) => {
         // Compute the total price by iterating over the fetched raw materials and multiplying with the quantity
         let totalPrice = 0;
         productsData.forEach(productData => {
-        const product = products.find(obj => obj.productId.toString() === productData._id.toString());
-        if (product) {
-            totalPrice += productsData.currentUnitPrice * product.quantity;
-        }
+            const product = products.find(obj => obj.productId.toString() === productData._id.toString());
+            if (product) {
+                totalPrice += productData.currentUnitPrice * product.quantity;
+            }
         });
 
         totalOrderPrice = totalPrice
+        console.log('Total Order Price: '+totalOrderPrice)
         return totalOrderPrice
     })
     .then(result => {
+
+        return Manufacturer.findById(manufacturer)
+    })
+    .then(fetchedManufac => {
+        
+        manufacAddress = fetchedManufac.publicAddress
+        
         const productOrder = new ProductOrder({
             items: productOrderItems,
             from: req.userId,
@@ -67,7 +76,7 @@ exports.createProductOrder = (req, res, next) => {
             result.createdAt,
             ethers.BigNumber.from(totalOrderPrice),
             req.publicAddress.toString(),
-            manufacturer,
+            manufacAddress,
             result._id.toString()
         )
     })
@@ -80,8 +89,25 @@ exports.createProductOrder = (req, res, next) => {
         return Distributer.findById(req.userId)
     })
     .then(distributer => {
-        distributer.productsOrder.push(orderId)
+        if(!distributer) {
+            const error = new Error('Distributer not found!')
+            error.statusCode = 404
+            throw error
+        }
+        distributer.productOrders.push(orderId)
         return distributer.save()
+    })
+    .then(result => {
+        return Manufacturer.findById(manufacturer)
+    })
+    .then(result => {
+        if(!result) {
+            const error = new Error('Manufacturer not found!')
+            error.statusCode = 404
+            throw error
+        }
+        result.productOrders.push(orderId)
+        return result.save()
     })
     .then(result => {
         res.status(201).json({message:'Order Placed Successfully!', orderId: orderId, transactionHash: transactionHash})

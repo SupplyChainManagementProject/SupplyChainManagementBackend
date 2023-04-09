@@ -4,7 +4,9 @@ const Product = require('../models/Product')
 const Manufacturer = require('../models/Manufacturer')
 const contract = require('../contract/Contract')
 const RawMaterialOrder = require('../models/RawMaterialOrder')
-const RawMaterial = require('../models/RawMaterial')
+const RawMaterial = require('../models/RawMaterial');
+const { default: mongoose } = require('mongoose');
+const Supplier = require('../models/Supplier');
 
 exports.createProduct = (req, res, next) => {
     
@@ -24,6 +26,7 @@ exports.createProduct = (req, res, next) => {
     const unixTimestamp = Math.floor(Date.now() / 1000)
     // const materialId = 'rawMaterialsId'+unixTimestamp.toString()
     // console.log(materialId)
+
 
     const product = new Product({
         name: productName,
@@ -77,6 +80,7 @@ exports.createRawMaterialOrder = (req, res, next) => {
     let transactionHash
     let orderId
     let totalOrderPrice
+    let createdAt
 
     const rawMaterialsArray = rawMaterialItems.map(obj => obj.rawMaterial)
     const quantityArray = rawMaterialItems.map(obj => obj.quantity)
@@ -118,14 +122,33 @@ exports.createRawMaterialOrder = (req, res, next) => {
         // address _supplier
         // string memory _orderId
         orderId = result._id.toString()
+        createdAt = result.createdAt
+        console.log('Manufacturer Public Address: '+req.publicAddress)
+        console.log('supplier Public Address: '+supplier)
+        return Supplier.findById(supplier)
+        
+    })
+    .then(fetchedSupplier => {
+        if(!fetchedSupplier) {
+            const error = new Error('supplier not found')
+            error.statusCode = 404
+            throw error
+        }
+
+        fetchedSupplier.rawMaterialOrders.push(orderId)
+        return fetchedSupplier.save()
+
+        
+    })
+    .then(result => {
         return contract.createRawMaterialOrder(
             rawMaterialsArray, 
             quantityArray, 
-            result.createdAt,
+            createdAt,
             ethers.BigNumber.from(totalOrderPrice),
-            req.publicAddress.toString(),
-            supplier,
-            result._id.toString()
+            req.publicAddress,
+            result.publicAddress,
+            orderId
         )
     })
     .then((tx) => {
@@ -137,11 +160,11 @@ exports.createRawMaterialOrder = (req, res, next) => {
         return Manufacturer.findById(req.userId)
     })
     .then(manufacturer => {
-        manufacturer.rawMaterialOrders.push(productId)
+        manufacturer.rawMaterialOrders.push(orderId)
         return manufacturer.save()
     })
     .then(result => {
-        res.status(201).json({message:'Order Placed Successfully!', productId: productId, transactionHash: transactionHash})
+        res.status(201).json({message:'Order Placed Successfully!', orderId: orderId, transactionHash: transactionHash})
     })
     .catch(err => {
         console.error('Error creating order:', err)
@@ -189,31 +212,7 @@ exports.getPlacedRawMaterialsOrder = (req, res, next) => {
             throw error
         }
 
-        res.status(200).json({count:manufacturer.products.length, products: manufacturer.products})
-    })
-    .catch(err => {
-        console.error('Error fetching placed rawMaterialOrders:', err)
-        if(!err.statusCode) {
-            err.statusCode = 500
-        }
-        next(err)
-    })
-}
-
-exports.getPlacedRawMaterialsOrder = (req, res, next) => {
-    const publicAddress = req.publicAddress
-    const manufacturerId = req.userId
-
-    Manufacturer.findById(manufacturerId)
-    .populate('rawMaterialOrders')
-    .then(manufacturer => {
-        if(!manufacturer)  {
-            const error = new Error('Manufacturer not found.')
-            error.statusCode = 404
-            throw error
-        }
-
-        res.status(200).json({count:manufacturer.products.length, products: manufacturer.products})
+        res.status(200).json({count:manufacturer.rawMaterialOrders.length, rawMaterialOrders: manufacturer.rawMaterialOrders})
     })
     .catch(err => {
         console.error('Error fetching placed rawMaterialOrders:', err)
@@ -237,7 +236,7 @@ exports.getRecievedProductOrders = (req, res, next) => {
             throw error
         }
 
-        res.status(200).json({count:manufacturer.products.length, products: manufacturer.products})
+        res.status(200).json({count:manufacturer.productOrders.length, productOrders: manufacturer.productOrders})
     })
     .catch(err => {
         console.error('Error fetching recieved productOrders:', err)

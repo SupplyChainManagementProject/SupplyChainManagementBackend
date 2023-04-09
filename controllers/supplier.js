@@ -88,3 +88,27 @@ exports.getCreatedRawMaterials = (req, res, next) => {
         next(err)
     })
 }
+
+exports.getRecievedRawMaterialOrders = (req, res, next) => {
+    const publicAddress = req.publicAddress
+    const supplierId = req.userId
+
+    Supplier.findById(supplierId)
+    .populate('rawMaterialOrders')
+    .then(supplier => {
+        if(!supplier)  {
+            const error = new Error('Supplier not found.')
+            error.statusCode = 404
+            throw error
+        }
+
+        res.status(200).json({count:supplier.rawMaterialOrders.length ,rawMaterialOrders: supplier.rawMaterialOrders})
+    })
+    .catch(err => {
+        console.error('Error creating raw material:', err)
+        if(!err.statusCode) {
+            err.statusCode = 500
+        }
+        next(err)
+    })
+}
