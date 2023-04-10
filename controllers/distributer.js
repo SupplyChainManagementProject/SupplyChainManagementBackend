@@ -126,7 +126,29 @@ exports.getPlacedProductOrders = (req, res, next) => {
     const distributerId = req.userId
 
     Distributer.findById(distributerId)
-    .populate('productOrders')
+    .populate({
+        path:'productOrders',
+        populate:[
+            {
+                path:'items.product',
+                model:'Product',
+                populate: {
+                    path: 'rawMaterials',
+                    model: 'RawMaterial'
+                }
+            },
+            { 
+                path: 'from', 
+                model: 'Distributer',
+                select: '_id publicAddress name location'
+            },
+            { 
+                path: 'to', 
+                model: 'Manufacturer',
+                select: '_id publicAddress name location' 
+            }
+        ]
+    })
     .then(distributer => {
         if(!distributer)  {
             const error = new Error('Manufacturer not found.')

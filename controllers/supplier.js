@@ -94,7 +94,25 @@ exports.getRecievedRawMaterialOrders = (req, res, next) => {
     const supplierId = req.userId
 
     Supplier.findById(supplierId)
-    .populate('rawMaterialOrders')
+    .populate({
+        path:'rawMaterialOrders',
+        populate: [
+            { 
+                path: 'items.rawMaterial', 
+                model: 'RawMaterial'
+            },
+            { 
+                path: 'from', 
+                model: 'Manufacturer',
+                select: '_id publicAddress name location'
+            },
+            { 
+                path: 'to', 
+                model: 'Supplier',
+                select: '_id publicAddress name location' 
+            }
+        ]
+    })
     .then(supplier => {
         if(!supplier)  {
             const error = new Error('Supplier not found.')

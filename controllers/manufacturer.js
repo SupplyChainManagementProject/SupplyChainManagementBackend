@@ -204,7 +204,26 @@ exports.getPlacedRawMaterialsOrder = (req, res, next) => {
     const manufacturerId = req.userId
 
     Manufacturer.findById(manufacturerId)
-    .populate('rawMaterialOrders')
+    .populate({
+        path:'rawMaterialOrders',
+        populate: [
+            { 
+                path: 'items.rawMaterial', 
+                model: 'RawMaterial'
+            },
+            { 
+                path: 'from', 
+                model: 'Manufacturer',
+                select: '_id publicAddress name location'
+            },
+            { 
+                path: 'to', 
+                model: 'Supplier',
+                select: '_id publicAddress name location' 
+            }
+        ]
+    })
+    
     .then(manufacturer => {
         if(!manufacturer)  {
             const error = new Error('Manufacturer not found.')
@@ -228,7 +247,29 @@ exports.getRecievedProductOrders = (req, res, next) => {
     const manufacturerId = req.userId
 
     Manufacturer.findById(manufacturerId)
-    .populate('productOrders')
+    .populate({
+        path:'productOrders',
+        populate:[
+            {
+                path:'items.product',
+                model:'Product',
+                populate: {
+                    path: 'rawMaterials',
+                    model: 'RawMaterial'
+                }
+            },
+            { 
+                path: 'from', 
+                model: 'Distributer',
+                select: '_id publicAddress name location'
+            },
+            { 
+                path: 'to', 
+                model: 'Manufacturer',
+                select: '_id publicAddress name location' 
+            }
+        ]
+    })
     .then(manufacturer => {
         if(!manufacturer)  {
             const error = new Error('Manufacturer not found.')
