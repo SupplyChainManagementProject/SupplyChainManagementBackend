@@ -7,6 +7,7 @@ const authRouter = require('./routes/auth')
 const supplierRouter = require('./routes/supplier')
 const manufacturerRouter = require('./routes/manufacturer')
 const distributerRouter = require('./routes/distributer')
+const healthCheckRouter = require('./routes/healthCheck')
 
 const app = express()
 dotenv.config()
@@ -21,6 +22,7 @@ app.use((req,res,next) => {
     next()
 })
 
+app.use('/', healthCheckRouter)
 app.use('/auth', authRouter)
 app.use('/supplier', supplierRouter)
 app.use('/manufacturer', manufacturerRouter)
