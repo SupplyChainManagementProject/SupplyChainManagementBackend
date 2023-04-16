@@ -22,11 +22,11 @@ app.use((req,res,next) => {
     next()
 })
 
-app.use('/', healthCheckRouter)
 app.use('/auth', authRouter)
 app.use('/supplier', supplierRouter)
 app.use('/manufacturer', manufacturerRouter)
 app.use('/distributer', distributerRouter)
+app.use(healthCheckRouter)
 
 app.use((error, req, res, next) => {
     console.log(error)
