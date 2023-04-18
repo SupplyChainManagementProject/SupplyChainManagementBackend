@@ -7,6 +7,7 @@ const authRouter = require('./routes/auth')
 const supplierRouter = require('./routes/supplier')
 const manufacturerRouter = require('./routes/manufacturer')
 const distributerRouter = require('./routes/distributer')
+const verifyRouter = require('./routes/verify')
 const healthCheckRouter = require('./routes/healthCheck')
 
 const app = express()
@@ -26,6 +27,7 @@ app.use('/auth', authRouter)
 app.use('/supplier', supplierRouter)
 app.use('/manufacturer', manufacturerRouter)
 app.use('/distributer', distributerRouter)
+app.use('/verify', verifyRouter)
 app.use(healthCheckRouter)
 
 app.use((error, req, res, next) => {
