@@ -1,0 +1,1231 @@
+paths:
+  /auth/supplier/create:
+    post:
+      tags:
+        - Authentication
+      summary: 
+        Create Supplier
+      description: "**Create a new Supplier.**"
+      operationId: RegisterSupplier
+      requestBody:
+        description: "Enter new Supplier Details."
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: 
+                  type: string
+                publicAddress: 
+                  type: string
+                location:
+                  type: string
+                password:
+                  type: string
+              required: 
+                - name
+                - publicAddress
+                - location
+                - password
+      responses: 
+        201:
+          description: The Supplier was successfully created.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  message: 
+                    type: string
+                  transactionHash: 
+                    type: string
+        401:
+          description: Unauthorized Response with details.
+        422: 
+          description: Validation Error with details.
+        500:
+          description: Internal Server Error with details.
+
+  /auth/supplier/login:
+    post:
+      tags:
+        - Authentication
+      summary: 
+        Login Supplier
+      description: "**Login an existing Supplier.**"
+      operationId: LoginSupplier
+      requestBody:
+        description: "Enter Supplier Login Credentials"
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                publicAddress: 
+                  type: string
+                password:
+                  type: string
+              required: 
+                - publicAddress
+                - password
+      parameters:
+        - name: Authorization
+          in: header
+          description: Access token for authorization
+          required: true
+          schema:
+            type: string
+      responses: 
+        200:
+          description: The Supplier was logged in successfully.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  token: 
+                    type: string
+                  supplierId:
+                    type: string
+                  publicAddress:
+                    type: string
+                  name: 
+                    type: string
+        401:
+          description: Unauthorized Response with details.
+        422: 
+          description: Validation Error with details.
+        500:
+          description: Internal Server Error with details.
+
+  /auth/manufacturer/create:
+    post:
+      tags:
+        - Authentication
+      summary: 
+        Create Manufacturer
+      description: "**Create a new Manufacturer.**"
+      operationId: RegisterManufacturer
+      requestBody:
+        description: "Enter new Manufacturer Details."
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: 
+                  type: string
+                publicAddress: 
+                  type: string
+                location:
+                  type: string
+                password:
+                  type: string
+              required: 
+                - name
+                - publicAddress
+                - location
+                - password
+      responses: 
+        201:
+          description: The Manufacturer was successfully created.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  message: 
+                    type: string
+                  transactionHash: 
+                    type: string
+        401:
+          description: Unauthorized Response with details.
+        422: 
+          description: Validation Error with details.
+        500:
+          description: Internal Server Error with details.
+
+  /auth/manufacturer/login:
+    post:
+      tags:
+        - Authentication
+      summary: 
+        Login Manufacturer
+      description: "**Login an existing Manufacturer.**"
+      operationId: LoginManufacturer
+      requestBody:
+        description: "Enter Manufacturer Login Credentials"
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                publicAddress: 
+                  type: string
+                password:
+                  type: string
+              required: 
+                - publicAddress
+                - password
+      parameters:
+        - name: Authorization
+          in: header
+          description: Access token for authorization
+          required: true
+          schema:
+            type: string
+      responses: 
+        200:
+          description: The Manufacturer was logged in successfully.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  token: 
+                    type: string
+                  manufacturerId:
+                    type: string
+                  publicAddress:
+                    type: string
+                  name: 
+                    type: string
+        401:
+          description: Unauthorized Response with details.
+        422: 
+          description: Validation Error with details.
+        500:
+          description: Internal Server Error with details.
+
+  /auth/distributer/create:
+    post:
+      tags:
+        - Authentication
+      summary: 
+        Create Distributer
+      description: "**Create a new Distributer.**"
+      operationId: RegisterDistributer
+      requestBody:
+        description: "Enter new Distributer Details."
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: 
+                  type: string
+                publicAddress: 
+                  type: string
+                location:
+                  type: string
+                password:
+                  type: string
+              required: 
+                - name
+                - publicAddress
+                - location
+                - password
+      responses: 
+        201:
+          description: The Distributer was successfully created.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  message: 
+                    type: string
+                  transactionHash: 
+                    type: string
+        401:
+          description: Unauthorized Response with details.
+        422: 
+          description: Validation Error with details.
+        500:
+          description: Internal Server Error with details.
+
+  /auth/distributer/login:
+    post:
+      tags:
+        - Authentication
+      summary: 
+        Login Distributer
+      description: "**Login an existing Distributer.**"
+      operationId: LoginDistributer
+      requestBody:
+        description: "Enter Distributer Login Credentials"
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                publicAddress: 
+                  type: string
+                password:
+                  type: string
+              required: 
+                - publicAddress
+                - password
+      parameters:
+        - name: Authorization
+          in: header
+          description: Access token for authorization
+          required: true
+          schema:
+            type: string
+      responses: 
+        200:
+          description: The Distributer was logged in successfully.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  token: 
+                    type: string
+                  manufacturerId:
+                    type: string
+                  publicAddress:
+                    type: string
+                  name: 
+                    type: string
+        401:
+          description: Unauthorized Response with details.
+        422: 
+          description: Validation Error with details.
+        500:
+          description: Internal Server Error with details.
+
+
+  /supplier/rawMaterial/create:
+    post:
+      tags:
+        - Raw Materials
+      summary: 
+        Enlist new Raw Material
+      description: "**Supplier can enlist a Raw Material supplied by him/her.**"
+      operationId: CreateRawMaterial
+      requestBody:
+        description: "Enter Raw Material Details."
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                materialName: 
+                  type: string
+                materialSource:
+                  type: string
+                originalUnitPrice:
+                  type: integer
+              required: 
+                - materialName
+                - materialSource
+                - originalUnitPrice
+      parameters:
+        - name: Authorization
+          in: header
+          description: Access token for authorization
+          required: true
+          schema:
+            type: string
+      responses: 
+        201:
+          description: The Raw Material was listed successfully.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  message: 
+                    type: string
+                  materialId:
+                    type: string
+                  transactionHash:
+                    type: string
+        401:
+          description: Unauthorized Response with details.
+        422: 
+          description: Validation Error with details.
+        500:
+          description: Internal Server Error with details.
+
+  /supplier/rawMaterials:
+    get:
+      tags:
+        - Raw Materials
+      summary: 
+        Get all Raw Material enlisted by the currently Authenticated Supplier.
+      description: "**Supplier can see all the Raw Materials enlisted by him/her.**"
+      operationId: GetRawMaterials
+      parameters:
+        - name: Authorization
+          in: header
+          description: Access token for authorization
+          required: true
+          schema:
+            type: string
+      responses: 
+        200:
+          description: All Raw Materials listed by the Supplier is fetched successfully.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  count: 
+                    type: integer
+                  rawMaterials:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/RawMaterial'
+        401:
+          description: Unauthorized Response with details.
+        422: 
+          description: Validation Error with details.
+        500:
+          description: Internal Server Error with details.
+
+  /supplier/rawMaterialOrders/recieved:
+    get:
+      tags:
+        - Raw Materials
+      summary: 
+        Get all Raw Material Orders received by the current Raw Material Supplier.
+      description: "**Supplier can see all the Raw Material Orders received by him/her.**"
+      operationId: GetRawMaterialOrders
+      parameters:
+        - name: Authorization
+          in: header
+          description: Access token for authorization
+          required: true
+          schema:
+            type: string
+      responses: 
+        200:
+          description: All Raw Material Orders received by the Supplier is fetched successfully.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  count: 
+                    type: integer
+                  rawMaterialOrders:
+                    $ref: '#/components/schemas/RawMaterialOrder'
+        401:
+          description: Unauthorized Response with details.
+        422: 
+          description: Validation Error with details.
+        500:
+          description: Internal Server Error with details.
+
+
+  /manufacturer/product/create:
+    post:
+      tags:
+        - Products
+      summary: 
+        Enlist new Product
+      description: "**Manufacturer can enlist a Product manufactured by him/her.**"
+      operationId: CreateProduct
+      requestBody:
+        description: "Enter Product Details."
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                productName: 
+                  type: string
+                rawMaterials:
+                  type: array
+                  items:
+                    type: string
+                originalUnitPrice:
+                  type: integer
+              required: 
+                - productName
+                - rawMaterials
+                - originalUnitPrice
+      parameters:
+        - name: Authorization
+          in: header
+          description: Access token for authorization
+          required: true
+          schema:
+            type: string
+      responses: 
+        201:
+          description: The Product was created successfully.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  message: 
+                    type: string
+                  productId:
+                    type: string
+                  transactionHash:
+                    type: string
+        401:
+          description: Unauthorized Response with details.
+        422: 
+          description: Validation Error with details.
+        500:
+          description: Internal Server Error with details.
+
+  /manufacturer/rawMaterialOrder/create:
+    post:
+      tags:
+        - Raw Materials
+      summary: 
+        Place a Raw Material Order
+      description: "**Manufacturer can place a Raw Material Order with a Supplier.**"
+      operationId: CreateRawMaterialOrder
+      requestBody:
+        description: "Enter Raw Material Order Details."
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rawMaterialItems: 
+                  type: array
+                  items: 
+                    type: object
+                    properties:
+                      rawMaterial: 
+                        type: string
+                        format: uuid
+                      quantity:
+                        type: integer
+                supplier:
+                  type: string
+                  format: uuid
+              required: 
+                - rawMaterialItems
+                - supplier
+      parameters:
+        - name: Authorization
+          in: header
+          description: Access token for authorization
+          required: true
+          schema:
+            type: string
+      responses: 
+        201:
+          description: The Raw Material Order was placed successfully.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  message: 
+                    type: string
+                  orderId:
+                    type: string
+                  transactionHash:
+                    type: string
+        401:
+          description: Unauthorized Response with details.
+        422: 
+          description: Validation Error with details.
+        500:
+          description: Internal Server Error with details.
+
+  /manufacturer/products:
+    get:
+      tags:
+        - Products
+      summary: 
+        Get all Products enlisted by the currently Authenticated Manufacturer.
+      description: "**Manufacturer can see all the Products enlisted by him/her.**"
+      operationId: GetProducts
+      parameters:
+        - name: Authorization
+          in: header
+          description: Access token for authorization
+          required: true
+          schema:
+            type: string
+      responses: 
+        200:
+          description: All Products listed by the Manufacturer is fetched successfully.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  count: 
+                    type: integer
+                  products:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Product'
+        401:
+          description: Unauthorized Response with details.
+        422: 
+          description: Validation Error with details.
+        500:
+          description: Internal Server Error with details.
+
+  /manufacturer/rawMaterialOrders/placed:
+    get:
+      tags:
+        - Raw Materials
+      summary: 
+        Get all Raw Material Orders placed by the current Manufacturer.
+      description: "**Manufacturer can see all the Raw Material Orders placed by him/her.**"
+      operationId: GetPlacedRawMaterialOrders
+      parameters:
+        - name: Authorization
+          in: header
+          description: Access token for authorization
+          required: true
+          schema:
+            type: string
+      responses: 
+        200:
+          description: All Raw Material Orders placed by the Manufacturer are fetched successfully.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  count: 
+                    type: integer
+                  rawMaterialOrders:
+                    $ref: '#/components/schemas/RawMaterialOrder'
+        401:
+          description: Unauthorized Response with details.
+        422: 
+          description: Validation Error with details.
+        500:
+          description: Internal Server Error with details.
+
+  /manufacturer/productOrders/recieved:
+    get:
+      tags:
+        - Products
+      summary: 
+        Get all Product Orders received by the current Manufacturer.
+      description: "**Manufacturer can see all the Product Orders received by him/her.**"
+      operationId: GetProductOrders
+      parameters:
+        - name: Authorization
+          in: header
+          description: Access token for authorization
+          required: true
+          schema:
+            type: string
+      responses: 
+        200:
+          description: All Product Orders received by the Manufacturer is fetched successfully.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  count: 
+                    type: integer
+                  productOrder:
+                    $ref: '#/components/schemas/ProductOrder'
+        401:
+          description: Unauthorized Response with details.
+        422: 
+          description: Validation Error with details.
+        500:
+          description: Internal Server Error with details.
+
+
+  /distributer/productOrder/create:
+    post:
+      tags:
+        - Products
+      summary: 
+        Place a Product Order
+      description: "**Distributer can place a Product Order with a Manufacturer.**"
+      operationId: CreateProductOrder
+      requestBody:
+        description: "Enter Product Order Details."
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                productOrderItems: 
+                  type: array
+                  items: 
+                    type: object
+                    properties:
+                      product: 
+                        type: string
+                        format: uuid
+                      quantity:
+                        type: integer
+                manufacturer:
+                  type: string
+                  format: uuid
+              required: 
+                - productOrderItems
+                - manufacturer
+      parameters:
+        - name: Authorization
+          in: header
+          description: Access token for authorization
+          required: true
+          schema:
+            type: string
+      responses: 
+        201:
+          description: The Product Order was placed successfully.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  message: 
+                    type: string
+                  orderId:
+                    type: string
+                  transactionHash:
+                    type: string
+        401:
+          description: Unauthorized Response with details.
+        422: 
+          description: Validation Error with details.
+        500:
+          description: Internal Server Error with details.
+
+  /distributer/productOrders/placed:
+    get:
+      tags:
+        - Products
+      summary: 
+        Get all Product Orders placed by the current Distributer.
+      description: "**Distributer can see all the Product Orders placed by him/her.**"
+      operationId: GetPlacedProductOrders
+      parameters:
+        - name: Authorization
+          in: header
+          description: Access token for authorization
+          required: true
+          schema:
+            type: string
+      responses: 
+        200:
+          description: All Product Orders placed by the Distributer are fetched successfully.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  count: 
+                    type: integer
+                  productOrders:
+                    $ref: '#/components/schemas/ProductOrder'
+        401:
+          description: Unauthorized Response with details.
+        422: 
+          description: Validation Error with details.
+        500:
+          description: Internal Server Error with details.
+
+
+  /verify/supplier/{id}:
+    get:
+      tags:
+        - Blockchain Verify
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: Supplier Id
+      summary: 
+        Verify Supplier.
+      description: "**Verify if the current Supplier exists on Blockchain or not.**"
+      operationId: VerifySupplier
+      responses: 
+        200:
+          description: Supplier fetched successfully.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  data: 
+                    type: array
+                    items: 
+                      type: string
+        500:
+          description: Internal Server Error with details.
+
+  /verify/manufacturer/{id}:
+    get:
+      tags:
+        - Blockchain Verify
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: Manufacturer Id
+      summary: 
+        Verify Manufacturer.
+      description: "**Verify if the current Manufacturer exists on Blockchain or not.**"
+      operationId: VerifyManufacturer
+      responses: 
+        200:
+          description: Manufacturer fetched successfully.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  data: 
+                    type: array
+                    items: 
+                      type: string
+        500:
+          description: Internal Server Error with details.
+
+  /verify/distributer/{id}:
+    get:
+      tags:
+        - Blockchain Verify
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: Distributer Id
+      summary: 
+        Verify Distributer.
+      description: "**Verify if the current Distributer exists on Blockchain or not.**"
+      operationId: VerifyDistributer
+      responses: 
+        200:
+          description: Distributer fetched successfully.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  data: 
+                    type: array
+                    items: 
+                      type: string
+        500:
+          description: Internal Server Error with details.
+
+  /verify/rawMaterial/{id}:
+    get:
+      tags:
+        - Blockchain Verify
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: RawMaterial Id
+      summary: 
+        Verify RawMaterial.
+      description: "**Verify if the current RawMaterial exists on Blockchain or not.**"
+      operationId: VerifyRawMaterial
+      responses: 
+        200:
+          description: RawMaterial fetched successfully.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  data: 
+                    type: array
+                    items: 
+                      type: string
+        500:
+          description: Internal Server Error with details.
+
+  /verify/rawMaterialOrder/{id}:
+    get:
+      tags:
+        - Blockchain Verify
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: RawMaterialOrder Id
+      summary: 
+        Verify RawMaterialOrder.
+      description: "**Verify if the current RawMaterialOrder exists on Blockchain or not.**"
+      operationId: VerifyRawMaterialOrder
+      responses: 
+        200:
+          description: RawMaterialOrder fetched successfully.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  data: 
+                    type: array
+                    items: 
+                      type: string
+        500:
+          description: Internal Server Error with details.
+
+  /verify/manufacturedProduct/{id}:
+    get:
+      tags:
+        - Blockchain Verify
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ManufacturedProduct Id
+      summary: 
+        Verify ManufacturedProduct.
+      description: "**Verify if the current ManufacturedProduct exists on Blockchain or not.**"
+      operationId: VerifyManufacturedProduct
+      responses: 
+        200:
+          description: ManufacturedProduct fetched successfully.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  data: 
+                    type: array
+                    items: 
+                      type: string
+        500:
+          description: Internal Server Error with details.
+
+  /verify/manufacturedProductOrder/{id}:
+    get:
+      tags:
+        - Blockchain Verify
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ManufacturedProductOrder Id
+      summary: 
+        Verify ManufacturedProductOrder.
+      description: "**Verify if the current ManufacturedProductOrder exists on Blockchain or not.**"
+      operationId: VerifyManufacturedProductOrder
+      responses: 
+        200:
+          description: ManufacturedProductOrder fetched successfully.
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  data: 
+                    type: array
+                    items: 
+                      type: string
+        500:
+          description: Internal Server Error with details.
+
+  
+
+components:
+  schemas:
+    Supplier:
+      title: Supplier
+      required:
+          - _id
+          - publicAddress
+          - name
+          - location
+          - password
+          - rawMaterials
+          - rawMaterialOrders
+          - createdAt
+          - updatedAt
+          - __v
+      type: object
+      properties:
+        _id: 
+          type: string
+        publicAddress:
+          type: string
+        name:
+          type: string
+        location:
+          type: string
+        password:
+          type: string
+        rawMaterials: 
+          type: array
+          items: 
+            $ref: '#/components/schemas/RawMaterial'
+        rawMaterialOrders:
+          type: array
+          items:
+            $ref: '#/components/schemas/RawMaterialOrder'
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        __v:
+          type: integer
+
+    Manufacturer:
+      title: Manufacturer
+      required:
+          - _id
+          - publicAddress
+          - name
+          - location
+          - password
+          - products
+          - rawMaterialOrders
+          - productOrders
+          - createdAt
+          - updatedAt
+          - __v
+      type: object
+      properties:
+        _id: 
+          type: string
+        publicAddress:
+          type: string
+        name:
+          type: string
+        location:
+          type: string
+        password:
+          type: string
+        products: 
+          type: array
+          items: 
+            $ref: '#/components/schemas/Product'
+        rawMaterialOrders:
+          type: array
+          items:
+            $ref: '#/components/schemas/RawMaterialOrder'
+        productOrders:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductOrder'
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        __v:
+          type: integer
+
+    Distributer:
+      title: Manufacturer
+      required:
+          - _id
+          - publicAddress
+          - name
+          - location
+          - password
+          - productOrders
+          - createdAt
+          - updatedAt
+          - __v
+      type: object
+      properties:
+        _id: 
+          type: string
+        publicAddress:
+          type: string
+        name:
+          type: string
+        location:
+          type: string
+        password:
+          type: string
+        productOrders:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductOrder'
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        __v:
+          type: integer
+
+    RawMaterialQuantity:
+      title: RawMaterialQuantity
+      type: object
+      properties:
+        rawMaterial:
+          $ref: '#/components/schemas/RawMaterial'
+        quantity:
+          type: integer
+      required:
+        - rawMaterial
+        - quantity
+
+    RawMaterialOrder:
+      title: RawMaterialOrder
+      type: object
+      required:
+        - _id
+        - items
+        - from
+        - to
+        - totalPrice
+        - createdAt
+        - updatedAt
+        - __v
+      properties:
+        _id: 
+          type: string
+          format: uuid
+        items: 
+          type: array
+          items: 
+            $ref: '#/components/schemas/RawMaterialQuantity'
+        from:
+          $ref: '#/components/schemas/Manufacturer'
+        to:
+          $ref: '#/components/schemas/Supplier'
+        totalPrice:
+          type: integer
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        __v:
+          type: integer
+
+    ProductQuantity:
+      title: ProductQuantity
+      type: object
+      properties:
+        product:
+          $ref: '#/components/schemas/Product'
+        quantity:
+          type: integer
+      required:
+        - rawMaterial
+        - quantity
+
+    ProductOrder:
+      title: ProductOrder
+      type: object
+      required:
+        - _id
+        - items
+        - from
+        - to
+        - totalPrice
+        - createdAt
+        - updatedAt
+        - __v
+      properties:
+        _id: 
+          type: string
+          format: uuid
+        items: 
+          type: array
+          items: 
+            $ref: '#/components/schemas/ProductQuantity'
+        from:
+          $ref: '#/components/schemas/Distributer'
+        to:
+          $ref: '#/components/schemas/Manufacturer'
+        totalPrice:
+          type: integer
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        __v:
+          type: integer
+
+    RawMaterial:
+      title: RawMaterial
+      type: object
+      required:
+        - _id
+        - name
+        - source
+        - originalUnitPrice
+        - currentUnitPrice
+        - supplier
+        - createdAt
+        - updatedAt
+        - __v
+      properties:
+        _id: 
+          type: string
+        name:
+          type: string
+        source:
+          type: string
+        originalUnitPrice:
+          type: integer
+        currentUnitPrice:
+          type: integer
+        supplier:
+          $ref: '#/components/schemas/Supplier'
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        __v:
+          type: integer
+
+    Product:
+      title: Product
+      type: object
+      required:
+        - _id
+        - name
+        - source
+        - originalUnitPrice
+        - currentUnitPrice
+        - rawMaterials
+        - manufacturer
+        - createdAt
+        - updatedAt
+        - __v
+      properties:
+        _id: 
+          type: string
+          format: uuid
+        name:
+          type: string
+        originalUnitPrice:
+          type: integer
+        currentUnitPrice:
+          type: integer
+        rawMaterials:
+          type: array
+          items:
+            $ref: '#/components/schemas/RawMaterial'
+        manufacturer:
+          $ref: '#/components/schemas/Manufacturer'
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+        __v:
+          type: integer
+
+    

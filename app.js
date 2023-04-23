@@ -2,7 +2,9 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
+const swaggerUI = require('swagger-ui-express')
 
+const swaggerSpec = require('./swagger/config')
 const authRouter = require('./routes/auth')
 const supplierRouter = require('./routes/supplier')
 const manufacturerRouter = require('./routes/manufacturer')
@@ -10,8 +12,11 @@ const distributerRouter = require('./routes/distributer')
 const verifyRouter = require('./routes/verify')
 const healthCheckRouter = require('./routes/healthCheck')
 
+
 const app = express()
 dotenv.config()
+
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec))
 
 // app.use(bodyParser.urlencoded()) // x-www-form-urlencoded <form>
 app.use(bodyParser.json())

@@ -662,6 +662,108 @@
   {
     "inputs": [
       {
+        "internalType": "string",
+        "name": "_materialId",
+        "type": "string"
+      }
+    ],
+    "name": "getRawMaterialById",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "materialId",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "materialName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "materialSource",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "creator",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "origUnitPrice",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct DataTypes.RawMaterial",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_orderId",
+        "type": "string"
+      }
+    ],
+    "name": "getRawMaterialOrderById",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "orderId",
+            "type": "string"
+          },
+          {
+            "internalType": "string[]",
+            "name": "rawMaterials",
+            "type": "string[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "quantities",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "string",
+            "name": "orderDateTime",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "totalPrice",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "manufacturer",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "supplier",
+            "type": "address"
+          }
+        ],
+        "internalType": "struct DataTypes.RawMaterialOrder",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "address",
         "name": "_supplier",
         "type": "address"
