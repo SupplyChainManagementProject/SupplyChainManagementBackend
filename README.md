@@ -1,7 +1,7 @@
 
 # Supply Chain Management Backend (Node.js)
 
-This Node.js project is a REST API service that performs various tasks of the Supply Chain Management process by means of a API calls.
+This Node.js project is a REST API service that performs various tasks of the Supply Chain Management process by means of API calls.
  
 
 
